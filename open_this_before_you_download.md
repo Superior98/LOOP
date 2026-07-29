@@ -2,7 +2,7 @@
 
 ## 📌 Assessment Website
 
-Welcome to **LOOP**, a website project created for assessment purposes.
+Welcome to **LOOP**, my website created for this competency task.
 
 This repository contains all the files required to run the website locally.
 
