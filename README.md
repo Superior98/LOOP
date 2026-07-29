@@ -8,12 +8,11 @@ This repository contains all the files required to run the website locally.
 
 ## 💾 Download Instructions
 
-1. Click the **Code** button at the top right of this page.
-2. Click the **dropdown arrow** and select **Download ZIP**.
-3. Once downloaded, **extract the ZIP file**.
-4. Delete the compressed ZIP file after extraction.
-5. Open the extracted folder.
-6. Open **`index.html`** to launch the website.
+1. Download the website files here: [Download LOOP Website](https://github.com/Superior98/LOOP/archive/refs/heads/main.zip)
+2. Extract the downloaded ZIP file.
+3. Delete the compressed ZIP file after extraction.
+4. Open the extracted folder.
+5. Open **`index.html`** to launch the website.
 
 ## 🌐 Running the Website
 
