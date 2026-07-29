@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOOP — Online Games Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Rajdhani:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="notification">Added to cart ✓</div>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <!-- Infinity loop SVG logo (inline recreation) -->
+    <svg class="logo-svg" width="32" height="20" viewBox="0 0 80 50" fill="none">
+      <path d="M40 25 C30 10, 8 8, 5 25 C2 42, 28 44, 40 25 Z" stroke="#f0eee8" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 0"/>
+      <path d="M40 25 C52 10, 74 8, 76 25 C78 42, 54 44, 40 25 Z" stroke="#f0eee8" stroke-width="6" fill="none" stroke-linecap="round" stroke-dasharray="90 8" stroke-dashoffset="0"/>
+    </svg>
+    LOOP
+  </a>
+  <form class="nav-search" role="search" onsubmit="return submitSearch(event)">
+    <span class="search-mark" aria-hidden="true">⌕</span>
+    <input id="game-search" type="search" placeholder="Search games" autocomplete="off" aria-label="Search games">
+    <button id="clear-search" class="search-clear" type="button" onclick="clearSearch()" aria-label="Clear search">×</button>
+  </form>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('about')" id="nav-about">About Us</a>
+    <a href="#" onclick="showPage('contact')" id="nav-contact">Contact Us</a>
+    <a href="#" onclick="showPage('shop')" id="nav-shop">Shop</a>
+    <a href="#" onclick="showPage('cart')" id="nav-cart" class="nav-cart">
+      Cart <span class="cart-badge" id="cart-badge" style="display:none"></span>
+    </a>
+    <a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     HOME
+══════════════════════════════ -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">// Next-gen games store</p>
+      <h1 class="hero-title">Play.<br><em>Loop.</em><br>Repeat.</h1>
+      <p class="hero-sub">Discover the finest online games — from pulse-pounding action to mind-bending strategy. Your next obsession is one click away.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn-primary" onclick="showPage('shop')">Browse Shop</a>
+        <a href="#" class="btn-ghost" onclick="showPage('about')">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="hero-logo-large" width="420" height="260" viewBox="0 0 80 50" fill="none">
+        <path d="M40 25 C30 10, 8 8, 5 25 C2 42, 28 44, 40 25 Z" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M40 25 C52 10, 74 8, 76 25 C78 42, 54 44, 40 25 Z" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="90 8"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Featured -->
+  <section class="section">
+    <p class="section-label">// Featured drops</p>
+    <h2 class="section-title">This week's picks</h2>
+    <div class="games-grid" id="featured-grid"></div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     ABOUT
+══════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="about-hero">
+    <div>
+      <p class="section-label">// Who we are</p>
+      <h1 class="about-title">Games<br>for the<br><em>dedicated.</em></h1>
+    </div>
+    <div class="about-text">
+      <p>LOOP was born from a simple belief: great games deserve a great home. We curate the best online titles — from indie gems to AAA blockbusters — and bring them directly to players who care.</p>
+      <p>No filler. No bloat. Just the games worth playing, with a shopping experience built for people who take gaming seriously.</p>
+      <p>Every title in our store is hand-picked by our team of dedicated players. We test, we play, we loop — and we only sell what we'd recommend to a friend.</p>
+    </div>
+  </div>
+  <div class="about-stats">
+    <div class="stat-block"><div class="stat-num">500+</div><div class="stat-label">Games in catalogue</div></div>
+    <div class="stat-block"><div class="stat-num">42k</div><div class="stat-label">Active players</div></div>
+    <div class="stat-block"><div class="stat-num">4.9★</div><div class="stat-label">Average store rating</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     SHOP
+══════════════════════════════ -->
+<div id="page-shop" class="page">
+  <div class="shop-header">
+    <h1 class="shop-title">Shop</h1>
+    <div class="shop-filters">
+      <button class="filter-btn active" onclick="filterGames('all', this)">All</button>
+      <button class="filter-btn" onclick="filterGames('action', this)">Action</button>
+      <button class="filter-btn" onclick="filterGames('rpg', this)">RPG</button>
+      <button class="filter-btn" onclick="filterGames('strategy', this)">Strategy</button>
+      <button class="filter-btn" onclick="filterGames('shooter', this)">Shooter</button>
+      <button class="filter-btn" onclick="filterGames('adventure', this)">Adventure</button>
+    </div>
+  </div>
+  <div class="shop-grid" id="shop-grid"></div>
+</div>
+
+<!-- ══════════════════════════════
+     CART
+══════════════════════════════ -->
+<div id="page-cart" class="page">
+  <div class="cart-section">
+    <h1 class="cart-title">Your Cart</h1>
+    <div id="cart-content"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-section">
+    <div class="contact-left">
+      <p class="section-label">// Get in touch</p>
+      <h1 class="contact-title">Let's<br><em>talk.</em></h1>
+      <p style="color:var(--grey-light);font-size:15px;line-height:1.7;max-width:380px">Have a question about a game, an order, or just want to say hey? We're a small team and we read everything.</p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <div class="contact-icon">✉</div>
+          <div class="contact-detail-text"><strong>Email</strong><span>hello@loopgames.store</span></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">⏱</div>
+          <div class="contact-detail-text"><strong>Response time</strong><span>Usually within 24 hours</span></div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🌏</div>
+          <div class="contact-detail-text"><strong>Based in</strong><span>Sydney, Australia</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-img-block">
+        <div class="contact-img-inner">
+          <svg width="200" height="124" viewBox="0 0 80 50" fill="none" opacity="0.3">
+            <path d="M40 25 C30 10, 8 8, 5 25 C2 42, 28 44, 40 25 Z" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M40 25 C52 10, 74 8, 76 25 C78 42, 54 44, 40 25 Z" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="90 8"/>
+          </svg>
+        </div>
+      </div>
+      <div class="form-group"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us what's on your mind..."></textarea></div>
+      <button class="btn-primary" style="width:100%;padding:16px" onclick="showNotif('Message sent! We\'ll be in touch.')">Send message</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-copy">© 2026 LOOP Games Store. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('shop')">Shop</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+  </div>
+</footer>
+<script src="script.js" defer></script>
+</body>
+</html>
